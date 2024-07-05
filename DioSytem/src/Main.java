@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 
+import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 public class Main {
@@ -28,9 +30,42 @@ public class Main {
         mentoriaC.setDescricao("Mentoria curso C#");
         mentoriaC.setData(LocalDate.now());
 
-        System.out.println(curso1);
+        /*System.out.println(curso1);
         System.out.println(curso2);
         System.out.println(mentoria);
-        System.out.println(mentoriaC);
+        System.out.println(mentoriaC);*/
+
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java");
+        bootcamp.setDescricao("Descrição Bootcamp Java");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devBruno = new Dev();
+        devBruno.setNome("Bruno");
+        devBruno.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Bruno:" + devBruno.getConteudosInscritos());
+        devBruno.progredir();
+        devBruno.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos Inscritos Bruno:" + devBruno.getConteudosInscritos());
+        System.out.println("Conteúdos Concluídos Bruno:" + devBruno.getConteudosConcluidos());
+        System.out.println("XP:" + devBruno.calcularTotalXp());
+
+        System.out.println("-------");
+
+        Dev devJoao = new Dev();
+        devJoao.setNome("Joao");
+        devJoao.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
+        devJoao.progredir();
+        devJoao.progredir();
+        devJoao.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
+        System.out.println("XP:" + devJoao.calcularTotalXp());
+
     }  
 }
